@@ -6,14 +6,18 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
     <script src="js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script src='js/lodash.js'></script>
     <script src='js/index.js'></script>
+    <script src='js/angular-google-maps.min.js'></script>
 </head>
 
 <body>
 <section class="tabs" ng-controller="TabsController as tabs">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
@@ -39,7 +43,8 @@
         </div>
     </nav>
 
-    <!-- TAB 1            TAB 1       =================================================  -->
+    <!-- TAB 1            TAB 1
+       =====================  -->
 
     <div ng-show="tabs.isSet(1)">
         <div class="events" ng-controller="TabsDemoCtrl">
@@ -92,7 +97,8 @@
 
     </div>
 
-    <!-- 2 TAB 2        2 TAB 2     =========================================== -->
+    <!-- 2 TAB 2        2 TAB 2
+    // ====================== -->
 
     <div ng-show="tabs.isSet(2)">
         <div class="events">
