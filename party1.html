@@ -128,7 +128,6 @@
                         </div>
                         <div class="col-md-6">
 
-
                         </div>
                     </div>
 
@@ -161,7 +160,7 @@
 										<a class="list-group-item">
 											<div class="row">
 												<div class="col-md-9"> 
-													<h2>{{ gift.name }}</h2>
+													<h2>{{ gift.name }}<span href=""  style="float: right;" ng-click="remItem($index)" class="glyphicon glyphicon-remove" aria-hidden="true"></span></h2>
 													{{ gift.description }}
 													<h2>{{ gift.price }} €</h2>
 												</div>
@@ -177,10 +176,9 @@
 																<input placeholder="Kommentaar" ng-model="txtcomment" type="text" class="form-control"  aria-describedby="basic-addon1">
 															</div>
 															<br>
-															<button ng-click='btn_add();' type="submit" class="btn btn-primary" >Lisa kommentaar</button>
+															<button ng-click='btn_add();' type="submit" class="btn btn-primary" >Lisa</button>
 															
 															<hr/>
-															<h4>Kommentaarid</h4>
 															<table class="table table-striped">
 																<tr ng-repeat="comnt in comment">
 																<td>{{ comnt }} <span href=""  style="float: right;" ng-click="remItem($index)" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
@@ -330,6 +328,9 @@
 				$scope.price = "";
             }
         }
+         $scope.remItem = function($index) {
+             $scope.gifts.splice($index, 1);
+         }
 		
 		$scope.comment = [];
         $scope.comment_add = function() {
