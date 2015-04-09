@@ -1,14 +1,13 @@
+var validationApp = angular.module('validationApp', []);
 
-	var validationApp = angular.module('validationApp', []);
+validationApp.controller('mainController', function ($scope) {
 
-	validationApp.controller('mainController', function($scope) {
-			
-		$scope.submitForm = function() {
+    $scope.submitForm = function () {
 
-			if ($scope.userForm.$valid) {
-				window.location = "index.html";
-			}
+        if ($scope.userForm.$valid) {
+            window.location = "index.html";
+        }
 
-		};
+    };
 
-	});
+});

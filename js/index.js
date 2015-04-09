@@ -72,8 +72,6 @@ angular.module('ui.bootstrap.demo').controller('ModalCommentCtrl', function ($sc
     };
 });
 
-// Please note that $modalInstance represents a modal window (instance) dependency.
-// It is not the same as the $modal service used above.
 
 angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
 
@@ -91,6 +89,7 @@ angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl', function ($s
     };
 });
 
+// Datepicker
 
 angular.module('ui.bootstrap.demo').controller('DatepickerDemoCtrl', function ($scope) {
     $scope.today = function () {
@@ -113,6 +112,8 @@ angular.module('ui.bootstrap.demo').controller('DatepickerDemoCtrl', function ($
 
 });
 
+// Timepicker
+
 angular.module('ui.bootstrap.demo').controller('TimepickerDemoCtrl', function ($scope, $log) {
     $scope.mytime = new Date();
 
@@ -123,11 +124,13 @@ angular.module('ui.bootstrap.demo').controller('TimepickerDemoCtrl', function ($
 
 });
 
+// Collapse menu
 
 angular.module('ui.bootstrap.demo').controller('CollapseDemoCtrl', function ($scope) {
     $scope.isCollapsed = true;
 });
 
+// Tabcontroller
 
 angular.module('ui.bootstrap.demo').controller('TabsDemoCtrl', function ($scope, $window) {
     $scope.tabs = [
@@ -149,35 +152,76 @@ angular.module('ui.bootstrap.demo').controller('TabsDemoCtrl', function ($scope,
     };
 });
 
-// Accordion menu from first TAB
 
-angular.module('ui.bootstrap.demo').controller('AccordionDemoCtrl', function ($scope) {
-    $scope.oneAtATime = true;
+// Comment & Attend section code
 
-    $scope.groups = [
-        {
-            title: 'Korraldaja',
-            content: 'Mihkel Must'
-        },
-        {
-            title: 'Raha',
-            content: 'EE928481092845823390'
+function FrmController($scope) {
+    $scope.comment = [];
+    $scope.btn_add = function () {
+        if ($scope.txtcomment != '') {
+            $scope.comment.push($scope.txtcomment);
+            $scope.txtcomment = "";
         }
-    ];
+    }
 
-    $scope.items = [{'name': 'Mahlapress', 'price': '40'},
-        {'name': 'Jalgratas', 'price': '60'}
+    $scope.remItem = function ($index) {
+        $scope.comment.splice($index, 1);
+    }
+}
+
+function GiftsController($scope) {
+    $scope.gifts = [{'name': 'Väike kassipoeg', 'description': 'Armas väike kiisu', 'price': '30'}];
+    $scope.btn_add = function () {
+        if ($scope.gifts.name != '' && $scope.gifts.description != '' && $scope.gifts.price != '') {
+            $scope.gifts.push({'name': $scope.name, 'description': $scope.description, 'price': $scope.price});
+            $scope.name = "";
+            $scope.description = "";
+            $scope.price = "";
+        }
+    }
+    $scope.remItem = function ($index) {
+        $scope.gifts.splice($index, 1);
+    }
+
+    $scope.comment = [];
+    $scope.comment_add = function () {
+        if ($scope.txtcomment != '') {
+            $scope.comment.push($scope.txtcomment);
+            $scope.txtcomment = "";
+        }
+    }
+}
+
+/*
+ // Accordion menu from first TAB
+
+ angular.module('ui.bootstrap.demo').controller('AccordionDemoCtrl', function ($scope) {
+ $scope.oneAtATime = true;
+
+ $scope.groups = [
+ {
+ title: 'Korraldaja',
+ content: 'Mihkel Must'
+ },
+ {
+ title: 'Raha',
+ content: 'EE928481092845823390'
+ }
+ ];
+
+ $scope.items = [{'name': 'Mahlapress', 'price': '40'},
+ {'name': 'Jalgratas', 'price': '60'}
 
 
-    ];
+ ];
 
-    $scope.addItem = function () {
-        var newItemNo = $scope.items.length + 1;
-        $scope.items.push({'name': 'Kingitus', 'price': '0'});
-    };
+ $scope.addItem = function () {
+ var newItemNo = $scope.items.length + 1;
+ $scope.items.push({'name': 'Kingitus', 'price': '0'});
+ };
 
-    $scope.status = {
-        isFirstOpen: true,
-        isFirstDisabled: false
-    };
-});
+ $scope.status = {
+ isFirstOpen: true,
+ isFirstDisabled: false
+ };
+ });*/
