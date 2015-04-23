@@ -1,17 +1,9 @@
+<?php include 'system/connection.php'; ?>
+
+
 <html ng-app="ui.bootstrap.demo">
 
-<head>
-    <title>Sünnipäevad</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
-    <script src="js/ui-bootstrap-tpls-0.12.1.min.js"></script>
-    <script src='js/lodash.js'></script>
-    <script src='js/index.js'></script>
-    <script src='js/angular-google-maps.min.js'></script>
-</head>
+    <?php include 'include/head.php'; ?>
 
 <body>
 <section class="tabs" ng-controller="TabsController as tabs">
@@ -23,7 +15,7 @@
 
     <div ng-show="tabs.isSet(1)">
         <div class="events" ng-controller="TabsDemoCtrl">
-            <h4>Nimekirjas on toodud kõik sellel aastal toimvad üritused
+            <h4>Nimekirjas on toodud kõik sellel aastal toimuvad üritused
                 <small> Soovitame osaleda!</small>
             </h4>
 

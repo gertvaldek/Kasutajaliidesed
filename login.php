@@ -1,18 +1,9 @@
+<?php include 'system/connection.php'; ?>
+
 <!DOCTYPE html>
 <html>
 
-<head>
-
-    <meta charset="utf-8">
-
-    <title>Sünnipäeva korraldamine v2.0</title>
-
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
+<?php include 'include/head.php'; ?>
 
 <body>
 

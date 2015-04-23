@@ -1,13 +1,8 @@
+<?php include 'system/connection.php'; ?>
+
 <html ng-app="ui.bootstrap.demo">
-<head>
-    <title>Sünnipäevad</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/party.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
-    <script src="js/ui-bootstrap-tpls-0.12.1.min.js"></script>
-    <script src='js/index.js'></script>
-</head>
+
+    <?php include 'include/head.php'; ?>
 
 <body>
 <section class="tabs" ng-controller="TabsController as tabs">
