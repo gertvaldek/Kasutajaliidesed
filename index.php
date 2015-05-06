@@ -3,7 +3,7 @@
 
 <html ng-app="ui.bootstrap.demo">
 
-    <?php include 'include/head.php'; ?>
+<?php include 'include/head.php'; ?>
 
 <body>
 <section class="tabs" ng-controller="TabsController as tabs">
@@ -12,6 +12,21 @@
 
     <!-- TAB 1            TAB 1
        =====================  -->
+
+
+    <!--
+<?php
+    /*
+        $result = mysql_query('SELECT * FROM user');
+        while ($row = mysql_fetch_array($result)) {
+
+            echo $row['id'];
+            echo $row['e_mail'];
+            echo $row['reg_date'];
+
+        }
+        */ ?>  -->
+
 
     <div ng-show="tabs.isSet(1)">
         <div class="events" ng-controller="TabsDemoCtrl">
@@ -23,42 +38,49 @@
             <p id="demo"></p>
 
             <div class="list-group">
+                <?php
+                $q_event = mysql_query('SELECT title, birthday_age, date, time, venue, description FROM event ORDER BY id DESC ');
+                while ($event = mysql_fetch_array($q_event)) {
 
-                <a href="party1.php" ng-click="tabs.setTab(2)" class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-3"><img src="images/party1.jpg" alt="Birth1" class="img-thumbnail"></div>
-                        <div class="col-md-9"><h4>Mihkli Sünnipäev <span class="label label-primary">22</span></h4>
-                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 23. aprill 2015, 18:00
-                            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> TTÜ Raamatukogu
-                            <hr/>
-                            Lorem ipsum dolor sit amet.
-                        </div>
+                    echo "<a href='' class='list-group-item'>";
+                    echo "<div class='row'>";
+                    echo "<div class='col-md-3'><img src='images/party1.jpg' alt='Birth1' class='img-thumbnail'></div>";
+                    echo "<div class='col-md-9'>";
+                    echo "<h4>" . $event['title'] . " <span class='label label-primary'>" . $event['birthday_age'] . "</span></h4>";
+                    echo "<span class='glyphicon glyphicon-time' aria-hidden='true'></span> " . $event['date'];
+                    echo "  <span class='glyphicon glyphicon-map-marker' aria-hidden='true''></span>" . $event['venue'];
+                    echo "<hr/>";
+                    echo $event['description'];
+                    echo " </div></div></a>";
+
+                }
+                ?>
+
+
+                <!--                <a href="#" class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3"><img src="images/party2.jpg" alt="Birth1" class="img-thumbnail"></div>
+                    <div class="col-md-9"><h4>Pireti Sünnipäev <span class="label label-primary">26</span></h4>
+                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 12. mai 2015, 21:00 <span
+                                class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Suve tn 5, Tallinn
+                        <hr/>
+                        Lorem ipsum dolor sit amet.
                     </div>
-                </a>
-                <a href="#" class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-3"><img src="images/party2.jpg" alt="Birth1" class="img-thumbnail"></div>
-                        <div class="col-md-9"><h4>Pireti Sünnipäev <span class="label label-primary">26</span></h4>
-                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 12. mai 2015, 21:00 <span
-                                    class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Suve tn 5, Tallinn
-                            <hr/>
-                            Lorem ipsum dolor sit amet.
-                        </div>
+                </div>
+            </a>
+            <a href="#" class="list-group-item">
+                <div class="row">
+                    <div class="col-md-3"><img src="images/party3.jpg" alt="Birth1" class="img-thumbnail"></div>
+                    <div class="col-md-9"><h4>Marii Sünnipäev Ööklubis <span class="label label-primary">12</span>
+                    </h4>
+                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 25. juuni 2015, 19:00
+                        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Raekoja plats 5,
+                        Tallinn
+                        <hr/>
+                        Lorem ipsum dolor sit amet.
                     </div>
-                </a>
-                <a href="#" class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-3"><img src="images/party3.jpg" alt="Birth1" class="img-thumbnail"></div>
-                        <div class="col-md-9"><h4>Marii Sünnipäev Ööklubis <span class="label label-primary">12</span>
-                        </h4>
-                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 25. juuni 2015, 19:00
-                            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Raekoja plats 5,
-                            Tallinn
-                            <hr/>
-                            Lorem ipsum dolor sit amet.
-                        </div>
-                    </div>
-                </a>
+                </div>
+            </a>-->
             </div>
         </div>
 
@@ -75,18 +97,30 @@
                         <div ng-controller="CollapseDemoCtrl">
                             <div class="col-md-6">
 
-                                <form>
+                                <form action="system/create_event.php" method="post">
 
                                     <div class="form-group">
                                         <label for="name">Pealkiri</label>
-                                        <input type="text" ng-model="heading" class="form-control"
+                                        <input name="title" type="text" class="form-control"
                                                id="exampleInputEmail1"
-                                               placeholder="Ürituse nimi">
+                                               placeholder="Ürituse nimi" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Toimumiskoht</label>
+                                        <input name="venue" type="text" class="form-control"
+                                               id="exampleInputEmail1"
+                                               placeholder="Asukoht" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Vanus</label>
+                                        <input name="age" type="text" class="form-control"
+                                               id="exampleInputEmail1"
+                                               placeholder="Sünnipäevalapse vanus">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="descrition">Ürituse kirjeldus</label>
-                                        <textarea class="form-control" ng-model="description" rows="3"></textarea>
+                                        <textarea name="description"class="form-control" ng-model="description" rows="3" required></textarea>
                                     </div>
                                     <div ng-controller="ModalDemoCtrl">
                                         <script type="text/ng-template" id="myModalContent.html">
@@ -94,9 +128,10 @@
                                                 <h3 class="modal-title">Ürituse asukoht</h3>
                                             </div>
                                             <div class="modal-body">
-                                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d32464.833613291285!2d24.744077886013756!3d59.43220559995476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2see!4v1428521236008"
-                                                        width="100%" height="400" frameborder="0"
-                                                        style="border:0"></iframe>
+                                                <iframe
+                                                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d32464.833613291285!2d24.744077886013756!3d59.43220559995476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2see!4v1428521236008"
+                                                    width="100%" height="400" frameborder="0"
+                                                    style="border:0"></iframe>
                                             </div>
                                         </script>
 
@@ -105,7 +140,7 @@
                                         </button>
                                     </div>
                                     <hr/>
-                                    <button class="btn btn-primary">Lisa üritus</button>
+                                    <button type="submit" class="btn btn-primary">Lisa üritus</button>
                                 </form>
 
                             </div>

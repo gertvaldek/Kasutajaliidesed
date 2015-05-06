@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 
-<?php include 'include/head.php'; ?>
 
+<?php include 'include/head.php'; ?>
+<link rel="stylesheet" href="css/style.css">
 <body>
 
 <div ng-app="validationApp" ng-controller="mainController">
@@ -17,13 +18,7 @@
                 <form name="userForm" ng-submit="submitForm()" novalidate>
 
                     <!-- NAME -->
-                    <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid}">
-                        <label>Nimi</label>
-                        <input type="text" name="name" class="form-control" ng-model="user.name" required>
 
-                        <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">Nimi on
-                            nõutud.</p>
-                    </div>
 
                     <!-- EMAIL -->
                     <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid}">
@@ -31,6 +26,13 @@
                         <input type="email" name="email" class="form-control" ng-model="user.email">
 
                         <p ng-show="userForm.email.$invalid" class="help-block">Sisestage kehtiv e-mail.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid}">
+                        <label>Nimi</label>
+                        <input type="password" name="name" class="form-control" ng-model="user.name" required>
+
+                        <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">Nimi on
+                            nõutud.</p>
                     </div>
 
                     <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Logi sisse</button>
@@ -40,6 +42,7 @@
             </div>
         </div>
 
+    </div>
     </div>
 
     <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>

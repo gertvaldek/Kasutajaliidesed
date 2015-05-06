@@ -3,7 +3,7 @@
  *
  *  !! COMMENTED OUT UNTIL REAL SQL USER PASS INSERTED !!
  *
- */
+ *
 session_start();
 $active = $_SESSION['active'];
 
@@ -12,6 +12,13 @@ if (!$con) {
     die('Could not connect: ' . mysql_error());
 }
 mysql_select_db("d8487sd95841", $con);
+*/
 
+
+$con = mysql_connect("localhost","root","");
+if (!$con) {
+    die('Could not connect: ' . mysql_error());
+}
+mysql_select_db("kasutajaliidesed", $con);
 
 ?>

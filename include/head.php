@@ -5,9 +5,10 @@
  * Date: 23.04.15
  * Time: 23:39
  */
+/* Set internal character encoding to UTF-8 */
 echo '<head>
     <title>Sünnipäeva korraldamine v3.0</title>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
