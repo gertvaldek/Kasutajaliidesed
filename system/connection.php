@@ -17,8 +17,9 @@ mysql_select_db("d8487sd95841", $con);
 
 $con = mysql_connect("localhost","root","");
 if (!$con) {
-    die('Could not connect: ' . mysql_error());
+    die('Could not connect: ' . mysql_error($con));
 }
-mysql_select_db("kasutajaliidesed", $con);
+mysql_select_db("kasutajaliidesed");
+mysql_set_charset('utf8', $con);
 
 ?>

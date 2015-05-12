@@ -1,4 +1,4 @@
-<?php include 'system/connection.php'; ?>
+<?php include 'system/connection.php';?>
 
 
 <html ng-app="ui.bootstrap.demo">
@@ -10,11 +10,6 @@
 
     <?php include 'include/nav.php'; ?>
 
-    <!-- TAB 1            TAB 1
-       =====================  -->
-
-
-    <!--
 <?php
     /*
         $result = mysql_query('SELECT * FROM user');
@@ -25,7 +20,7 @@
             echo $row['reg_date'];
 
         }
-        */ ?>  -->
+        */ ?>
 
 
     <div ng-show="tabs.isSet(1)">
@@ -34,15 +29,14 @@
                 <small> Soovitame osaleda!</small>
             </h4>
 
-
             <p id="demo"></p>
 
             <div class="list-group">
                 <?php
-                $q_event = mysql_query('SELECT title, birthday_age, date, time, venue, description FROM event ORDER BY id DESC ');
+                $q_event = mysql_query('SELECT id, title, birthday_age, date, time, venue, description FROM event ORDER BY id DESC ');
                 while ($event = mysql_fetch_array($q_event)) {
 
-                    echo "<a href='' class='list-group-item'>";
+                    echo '<a href="party.php?eventId='. $event['id'] .' "class="list-group-item" >';
                     echo "<div class='row'>";
                     echo "<div class='col-md-3'><img src='images/party1.jpg' alt='Birth1' class='img-thumbnail'></div>";
                     echo "<div class='col-md-9'>";

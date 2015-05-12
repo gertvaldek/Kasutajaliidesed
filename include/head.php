@@ -5,7 +5,7 @@
  * Date: 23.04.15
  * Time: 23:39
  */
-/* Set internal character encoding to UTF-8 */
+
 echo '<head>
     <title>Sünnipäeva korraldamine v3.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>

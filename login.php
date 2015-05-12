@@ -36,6 +36,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Logi sisse</button>
+                    <button href="register.php" class="btn btn-primary" >Registreeru</button>
 
                 </form>
 

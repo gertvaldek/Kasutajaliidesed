@@ -11,6 +11,14 @@
 
     <!-- TAB 1            TAB 1 ==========================================================================  -->
 
+    <?php
+
+    // Võtan URList event ID
+    $eventId = (int)$_GET['eventId'];
+
+    ?>
+
+
     <div ng-show="tabs.isSet(1)">
         <form>
             <div class="backButton">
@@ -34,21 +42,20 @@
 
                                     <div class="col-md-5">
 
-                                        <img src="images/party1.jpg" alt="Pidu 1" class="img-thumbnail"></div>
-                                    <div class="col-md-7">
-                                        <h3>Mihkli Sünnipäev <span class="label label-primary">22</span></h3>
-                                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span> 23. aprill
-                                        2015, 18:00 <span class="glyphicon glyphicon-map-marker"
-                                                          aria-hidden="true"></span> TTÜ Raamatukogu
-                                        <hr/>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum.
-                                        <hr/>
+                                        <?php
+                                        $q_event = mysql_query("SELECT id, title, birthday_age, date, time, venue, description FROM event WHERE id = '$eventId' ORDER BY id DESC ");
+                                        while ($event = mysql_fetch_array($q_event)) {
 
+                                            echo '<img src="images/party1.jpg" alt="Pidu 1" class="img-thumbnail"></div>';
+                                        echo '<div class="col-md-7">';
+                                        echo '<h3>' . $event['title'] . '  <span class="label label-primary">' . $event['birthday_age'] . '</span></h3>';
+                                        echo '<span class="glyphicon glyphicon-time" aria-hidden="true"></span> ' . $event['date'];
+                                        echo '  <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> ' . $event['venue'];
+                                        echo '<hr/>';
+                                        echo $event['description'];
+                                        echo '<hr/>';
+
+                                        } ?>
                                         <div ng-controller="ModalDemoCtrl">
                                             <script type="text/ng-template" id="myModalContent.html">
                                                 <div class="modal-header">
@@ -64,6 +71,7 @@
                                             <button class="btn btn-default" ng-click="open('lg')">Asukoht kaardil
                                             </button>
                                         </div>
+
 
 
                                     </div>
