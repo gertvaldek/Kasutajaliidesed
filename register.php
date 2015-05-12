@@ -1,5 +1,13 @@
 <?php include 'system/connection.php'; ?>
 
+<?php
+
+function userAlreadyExists() {
+    echo "User exists";
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -15,7 +23,7 @@
             <div class="panel-body">
 
 
-                <form name="userForm" ng-submit="submitForm()" novalidate>
+                <form name="userForm" ng-submit="submitForm()" method="post" action="system/newRegisterUser.php" novalidate>
 
                     <!-- NAME -->
 
@@ -23,14 +31,14 @@
                     <!-- EMAIL -->
                     <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid}">
                         <label>Eesnimi</label>
-                        <input type="password" name="firstname" class="form-control" ng-model="user.name" required>
+                        <input type="name" name="firstname" class="form-control" ng-model="user.first" required>
 
                         <p ng-show="userForm.name.$invalid" class="help-block">Eesnimi on
                             nõutud.</p>
                     </div>
                     <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid}">
                         <label>Perenimi</label>
-                        <input type="password" name="lastname" class="form-control" ng-model="user.name" required>
+                        <input type="name" name="lastname" class="form-control" ng-model="user.last" required>
 
                         <p ng-show="userForm.name.$invalid" class="help-block">Perenimi on
                             nõutud.</p>
@@ -43,7 +51,7 @@
                     </div>
                     <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid}">
                         <label>Parool</label>
-                        <input type="password" name="password" class="form-control" ng-model="user.name" required>
+                        <input type="password" name="password" class="form-control" ng-model="user.password" required>
 
                         <p ng-show="userForm.name.$invalid" class="help-block">Parool on
                             nõutud.</p>

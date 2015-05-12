@@ -33,7 +33,7 @@
 
             <div class="list-group">
                 <?php
-                $q_event = mysql_query('SELECT id, title, birthday_age, date, time, venue, description FROM event ORDER BY id DESC ');
+                $q_event = mysql_query('SELECT id, title, birthday_age, date, time, venue, description FROM events ORDER BY id DESC ');
                 while ($event = mysql_fetch_array($q_event)) {
 
                     echo '<a href="party.php?eventId='. $event['id'] .' "class="list-group-item" >';

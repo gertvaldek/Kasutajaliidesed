@@ -43,7 +43,7 @@
                                     <div class="col-md-5">
 
                                         <?php
-                                        $q_event = mysql_query("SELECT id, title, birthday_age, date, time, venue, description FROM event WHERE id = '$eventId' ORDER BY id DESC ");
+                                        $q_event = mysql_query("SELECT id, title, birthday_age, date, time, venue, description FROM events WHERE id = '$eventId' ORDER BY id DESC ");
                                         while ($event = mysql_fetch_array($q_event)) {
 
                                             echo '<img src="images/party1.jpg" alt="Pidu 1" class="img-thumbnail"></div>';
