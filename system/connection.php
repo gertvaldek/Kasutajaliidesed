@@ -14,6 +14,8 @@ if (!$con) {
 mysql_select_db("d8487sd95841", $con);
 */
 
+session_start();
+$active = $_SESSION['active'];
 
 $con = mysql_connect("localhost","root","");
 if (!$con) {

@@ -6,7 +6,7 @@
  * Time: 23:39
  */
 
-echo '<head>
+echo '
     <title>Sünnipäeva korraldamine v3.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="css/index.css">
@@ -17,5 +17,5 @@ echo '<head>
     <script src="js/lodash.js"></script>
     <script src="js/index.js"></script>
     <script src="js/angular-google-maps.min.js"></script>
-</head>';
+';
 ?>

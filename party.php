@@ -1,9 +1,11 @@
 <?php include 'system/connection.php'; ?>
 
 <html ng-app="ui.bootstrap.demo">
-
+<head>
     <?php include 'include/head.php'; ?>
 
+<link rel="stylesheet" href="css/party.css">
+</head>
 <body>
 <section class="tabs" ng-controller="TabsController as tabs">
 
@@ -49,7 +51,8 @@
                                             echo '<img src="images/party1.jpg" alt="Pidu 1" class="img-thumbnail"></div>';
                                         echo '<div class="col-md-7">';
                                         echo '<h3>' . $event['title'] . '  <span class="label label-primary">' . $event['birthday_age'] . '</span></h3>';
-                                        echo '<span class="glyphicon glyphicon-time" aria-hidden="true"></span> ' . $event['date'];
+                                        echo '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> ' . $event['date'] . "  ";
+                                            echo '<span class="glyphicon glyphicon-time" aria-hidden="true"></span> ' . $event['time'];
                                         echo '  <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> ' . $event['venue'];
                                         echo '<hr/>';
                                         echo $event['description'];

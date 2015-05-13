@@ -14,6 +14,6 @@
         $con = mysql_query($register);
     }
     else {
-        userAlreadyExists();
+       echo "Sama e-mailiga on juba konto loodud!";
     }
 ?>

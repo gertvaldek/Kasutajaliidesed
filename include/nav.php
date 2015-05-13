@@ -1,3 +1,4 @@
+<?php include ($_SERVER['DOCUMENT_ROOT'].'/system/connection.php'); ?>
 <?php
 echo '
 <nav class="navbar navbar-default">
@@ -19,6 +20,13 @@ echo '
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+            <li>
+            <a href="login.php"> '; ?>
+
+            <?php echo" <b>" . $_SESSION['active']. "</b>"; ?>
+       <?php echo '
+</a>
+                </li>
                 <li><a href="login.php">Logi välja</a>
                 </li>
 

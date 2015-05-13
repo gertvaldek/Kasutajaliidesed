@@ -4,7 +4,7 @@
 <html ng-app="ui.bootstrap.demo">
 
 <?php include 'include/head.php'; ?>
-
+<link rel="stylesheet" href="css/party.css">
 <body>
 <section class="tabs" ng-controller="TabsController as tabs">
 
@@ -91,7 +91,7 @@
                         <div ng-controller="CollapseDemoCtrl">
                             <div class="col-md-6">
 
-                                <form action="system/create_event.php" method="post">
+                                <form action="system/newEvent.php" method="post">
 
                                     <div class="form-group">
                                         <label for="name">Pealkiri</label>
