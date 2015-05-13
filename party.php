@@ -1,4 +1,8 @@
-<?php include 'system/connection.php'; ?>
+<?php include 'system/connection.php';
+
+session_start();
+$active = $_SESSION['active'];
+?>
 
 <html ng-app="ui.bootstrap.demo">
 <head>

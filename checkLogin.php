@@ -5,7 +5,9 @@
  * Date: 13.05.15
  * Time: 14:50
  */
-include ($_SERVER['DOCUMENT_ROOT'].'/system/connection.php');
+
+session_start();
+include dirname('Kasutajaliidesed') . '/system/connection.php';
 
 $myusername=$_POST['email'];
 $myusername = stripslashes($myusername);
@@ -28,7 +30,7 @@ $count1=mysql_num_rows($result1);
 if($count1==1){
     $_SESSION['myusername']="username";
     header("Location: index.php");
-    $_SESSION['active'] = $_POST['myusername'];
+    $_SESSION['active'] = $_POST['email'];
 } else {
     echo "E-mail või parool on vale";
 }

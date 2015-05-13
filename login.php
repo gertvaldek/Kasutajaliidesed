@@ -1,4 +1,8 @@
-<?php include 'system/connection.php'; ?>
+<?php
+session_start();
+
+
+include 'system/connection.php';?>
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +19,7 @@
             <div class="panel-body">
 
 
-                <form method="post" action="system/checkLogin.php" name="userForm" ng-submit="submitForm()" novalidate>
+                <form method="post" action="checkLogin.php" name="userForm" ng-submit="submitForm()" novalidate>
 
 
                     <!-- EMAIL -->

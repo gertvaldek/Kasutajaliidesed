@@ -1,4 +1,9 @@
-<?php include ($_SERVER['DOCUMENT_ROOT'].'/system/connection.php'); ?>
+<?php
+
+
+?>
+
+
 <?php
 echo '
 <nav class="navbar navbar-default">
@@ -19,18 +24,14 @@ echo '
                 <li role="presentation"><a href ng-click="tabs.setTab(2)">Loo uus üritus</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-            <li>
-            <a href="login.php"> '; ?>
-
-            <?php echo" <b>" . $_SESSION['active']. "</b>"; ?>
-       <?php echo '
-</a>
-                </li>
-                <li><a href="login.php">Logi välja</a>
+            <ul class="nav navbar-nav navbar-right"> '?>
+            <?php if ($_SESSION['active'] == true) { ?>
+                    <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $_SESSION['active']; ?> </a></li>
+                <li><a href="system/logout.php">Logi välja</a>
                 </li>
 
-            </ul>
+            </ul> <?php } ?>
+<?php echo '
         </div>
     </div>
 </nav>';

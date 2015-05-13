@@ -1,31 +1,22 @@
-<?php include 'system/connection.php';?>
+<?php include 'system/connection.php';
+
+session_start();
+$active = $_SESSION['active'];
+?>
 
 
 <html ng-app="ui.bootstrap.demo">
 
 <?php include 'include/head.php'; ?>
-<link rel="stylesheet" href="css/party.css">
+<link rel="stylesheet" href="css/index.css">
 <body>
 <section class="tabs" ng-controller="TabsController as tabs">
 
     <?php include 'include/nav.php'; ?>
 
-<?php
-    /*
-        $result = mysql_query('SELECT * FROM user');
-        while ($row = mysql_fetch_array($result)) {
-
-            echo $row['id'];
-            echo $row['e_mail'];
-            echo $row['reg_date'];
-
-        }
-        */ ?>
-
-
     <div ng-show="tabs.isSet(1)">
         <div class="events" ng-controller="TabsDemoCtrl">
-            <h4>Nimekirjas on toodud kõik sellel aastal toimuvad üritused
+            <h4>Toimuvad üritused
                 <small> Soovitame osaleda!</small>
             </h4>
 
@@ -41,7 +32,7 @@
                     echo "<div class='col-md-3'><img src='images/party1.jpg' alt='Birth1' class='img-thumbnail'></div>";
                     echo "<div class='col-md-9'>";
                     echo "<h4>" . $event['title'] . " <span class='label label-primary'>" . $event['birthday_age'] . "</span></h4>";
-                    echo "<span class='glyphicon glyphicon-time' aria-hidden='true'></span> " . $event['date'];
+                    echo "<span class='glyphicon glyphicon-calendar' aria-hidden='true'></span> " . $event['date'];
                     echo "  <span class='glyphicon glyphicon-map-marker' aria-hidden='true''></span>" . $event['venue'];
                     echo "<hr/>";
                     echo $event['description'];
