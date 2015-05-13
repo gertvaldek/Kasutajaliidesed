@@ -26,14 +26,15 @@ $active = $_SESSION['active'];
 
 
     <div ng-show="tabs.isSet(1)">
-        <form>
-            <div class="backButton">
-                <button type="button" class="btn btn-default" VALUE="Tagasi" onClick="history.go(-1);return true;">
 
-				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
-                </button>
+            <div class="backButton">
+
+                    <ul class="pager">
+                        <li><a onClick="history.go(-1);return true;"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">    </a></li>
+
+                    </ul>
+
             </div>
-        </form>
 
         <div class="events" ng-controller="TabsDemoCtrl">
             <tabset justified="true">
@@ -99,16 +100,17 @@ $active = $_SESSION['active'];
                                     <h4>Märgi ennast osalejaks <span class="label label-primary">Nüüd ja kohe!</span>
                                     </h4>
                                     <hr/>
-                                    <form ng-controller="FrmController">
+                                    <form>
                                         <div class="input-group">
                                             <span class="input-group-addon" id="sizing-addon2">Nimi</span>
                                             <input ng-model="txtcomment" type="text" class="form-control"
                                                    aria-describedby="basic-addon1">
                                         </div>
                                         <br>
-                                        <button ng-click='btn_add();' type="submit" class="btn btn-primary">Märgi
-                                            osalejaks
-                                        </button>
+                                        <button type="submit" class="btn btn-primary">Jah</button>
+                                        <button type="submit" class="btn btn-primary">Võib-olla</button>
+                                        <button type="submit" class="btn btn-primary">Ei</button>
+
                                         <hr/>
                                         <h4>Osalejad</h4>
                                         <table class="table table-striped">
