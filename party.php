@@ -2,6 +2,7 @@
 
 session_start();
 $active = $_SESSION['active'];
+
 ?>
 
 <html ng-app="ui.bootstrap.demo">
@@ -20,7 +21,7 @@ $active = $_SESSION['active'];
     <?php
 
     // Võtan URList event ID
-    $eventId = (int)$_GET['eventId'];
+   $eventId = (int)$_GET['eventId'];
 
     ?>
 
@@ -100,35 +101,34 @@ $active = $_SESSION['active'];
                                     <h4>Märgi ennast osalejaks <span class="label label-primary">Nüüd ja kohe!</span>
                                     </h4>
                                     <hr/>
-                                    <form>
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="sizing-addon2">Nimi</span>
-                                            <input ng-model="txtcomment" type="text" class="form-control"
-                                                   aria-describedby="basic-addon1">
-                                        </div>
-                                        <br>
-                                        <button type="submit" class="btn btn-primary">Jah</button>
-                                        <button type="submit" class="btn btn-primary">Võib-olla</button>
-                                        <button type="submit" class="btn btn-primary">Ei</button>
+                                    <form method="post" action="system/newAttend.php?eventId=<?php echo "$eventId"; ?>">
+
+                                        <button type="submit" name="status" value="Jah" class="btn btn-default">Jah</button>
+                                        <button type="submit" name="status" value="Võib-olla" class="btn btn-default">Võib-olla</button>
+                                        <button type="submit" name="status" value="Ei" class="btn btn-default">Ei</button>
 
                                         <hr/>
-                                        <h4>Osalejad</h4>
-                                        <table class="table table-striped">
 
-                                            <tr ng-repeat="comnt in comment">
-                                                <td>{{ comnt }}
-                                                    <button type="button" style="float: right;"
-                                                            ng-click="remItem($index)" class="close" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span></button>
-
-
-                                            </tr>
-
-                                        </table>
                                     </form>
 
                                 </div>
                                 <div class="col-md-6">
+                                    <h4>Osalejad</h4>
+                                    <?php
+                                    echo '<table class="table">';
+                                    $q_attend = mysql_query("SELECT events_id, users_id, status, users.firstname, users.lastname FROM attendees LEFT JOIN users ON attendees.users_id = users.id WHERE events_id = '$eventId' ORDER BY attend_time DESC"); //  "
+                                    while ($attend = mysql_fetch_array($q_attend)) {
+
+                                        echo '<tr><td>';
+                                        echo $attend['firstname'] . " " . $attend['lastname'];
+                                        echo '</td><td>';
+                                        echo $attend['status'];
+                                        echo '</td></tr>';
+                                    }
+                                    echo '</table>';
+
+                                    ?>
+
 
                                 </div>
                             </div>

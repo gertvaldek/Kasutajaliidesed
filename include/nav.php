@@ -1,6 +1,9 @@
 <?php
 
 
+$q_us = mysql_query("SELECT id, firstname, lastname FROM users WHERE e_mail = '$active'");
+$userq = mysql_fetch_array($q_us);
+
 ?>
 
 
@@ -26,7 +29,7 @@ echo '
             </ul>
             <ul class="nav navbar-nav navbar-right"> '?>
             <?php if ($_SESSION['active'] == true) { ?>
-                    <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $_SESSION['active']; ?> </a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $userq['firstname'] . " " . $userq['lastname'] ; ?> </a></li>
                 <li><a href="system/logout.php">Logi välja</a>
                 </li>
 
