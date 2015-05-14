@@ -31,7 +31,7 @@ $active = $_SESSION['active'];
             <div class="backButton">
 
                     <ul class="pager">
-                        <li><a onClick="history.go(-1);return true;"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">    </a></li>
+                        <li><a onclick="javascript:window.location.href='index.php'"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">    </a></li>
 
                     </ul>
 

@@ -6,9 +6,6 @@ include 'connection.php';
 
 $active = $_SESSION['active'];
 
-$event_id = $_SESSION['id'];
-echo "Event id on " . $event_id;
-
 $eventId = (int)$_GET['eventId'];
 
 echo "Event id on " . $eventId;
