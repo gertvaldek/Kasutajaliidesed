@@ -46,3 +46,6 @@ textarea {
 .buttonMargin {
     vertical-align: 5px;
 }
+.input-group {
+    padding-bottom: 15px;
+}

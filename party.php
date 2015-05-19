@@ -101,11 +101,11 @@ $active = $_SESSION['active'];
                                     <h4>Märgi ennast osalejaks <span class="label label-primary">Nüüd ja kohe!</span>
                                     </h4>
                                     <hr/>
-                                    <form method="post" action="system/newAttend.php?eventId=<?php echo "$eventId"; ?>">
+                                    <form id="attendForm" method="post" action="system/newAttend.php?eventId=<?php echo "$eventId"; ?>">
 
-                                        <button type="submit" name="status" value="Jah" class="btn btn-default">Jah</button>
-                                        <button type="submit" name="status" value="Võib-olla" class="btn btn-default">Võib-olla</button>
-                                        <button type="submit" name="status" value="Ei" class="btn btn-default">Ei</button>
+                                        <button id="submit" name="status" value="Jah" class="btn btn-default">Jah</button>
+                                        <button id="submit" name="status" value="Võib-olla" class="btn btn-default">Võib-olla</button>
+                                        <button id="submit" name="status" value="Ei" class="btn btn-default">Ei</button>
 
                                         <hr/>
 
@@ -121,7 +121,7 @@ $active = $_SESSION['active'];
 
                                         echo '<tr><td>';
                                         echo $attend['firstname'] . " " . $attend['lastname'];
-                                        echo '</td><td>';
+                                        echo '</td><td id="result">';
                                         echo $attend['status'];
                                         echo '</td></tr>';
                                     }
@@ -148,83 +148,56 @@ $active = $_SESSION['active'];
                                 <hr/>
                                 <form ng-controller="GiftsController">
                                     <div class="input-group">
-                                        <span class="input-group-addon" id="sizing-addon2">Nimi</span>
-                                        <input ng-model="name" type="text" class="form-control"
-                                               aria-describedby="basic-addon1">
-
-                                        <span class="input-group-addon" id="sizing-addon2">Kirjeldus</span>
-                                        <input ng-model="description" type="text" class="form-control"
-                                               aria-describedby="basic-addon1">
-                                        <span class="input-group-addon" id="sizing-addon2">Hind</span>
-                                        <input ng-model="price" type="text" class="form-control"
-                                               aria-describedby="basic-addon1">
+                                        <span class="input-group-addon">Nimi</span>
+                                        <input name="giftName" type="text" class="form-control">
                                     </div>
+                                    <div class="input-group">
+
+                                    <span class="input-group-addon">Hind</span>
+                                        <input name="giftPrice" type="text" class="form-control">
+                                    </div>
+                                    <textarea name="giftDescription" class="form-control" rows="3" placeholder="Kirjeldus"></textarea>
                                     <br>
                                     <button ng-click='btn_add();' type="button" class="btn btn-primary">Lisa kingitus
                                     </button>
                                     <hr/>
-                                    <div ng-repeat="gift in gifts">
-                                        <a class="list-group-item">
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <p>
-                                                        <button type="button" style="float: left;"
-                                                                ng-click="remItem($index)" class="close"
-                                                                aria-label="Close"><span
-                                                                aria-hidden="true">&times;</span></button>
-                                                    </p>
-
-                                                    <h2>{{ gift.name }}</h2>
-                                                    {{ gift.description }}
-                                                    <h2>{{ gift.price }} €</h2>
-                                                </div>
-                                            </div>
-                                            <div ng-controller="ModalCommentCtrl">
-                                                <script type="text/ng-template" id="comments.html">
-                                                    <div class="modal-header">
-                                                        <h3 class="modal-title">Kommentaarid</h3>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form ng-controller="FrmController">
-                                                            <div class="input-group">
-                                                                <input placeholder="Kommentaar" ng-model="txtcomment"
-                                                                       type="text" class="form-control"
-                                                                       aria-describedby="basic-addon1">
-                                                            </div>
-                                                            <br>
-                                                            <button ng-click='btn_add();' type="submit"
-                                                                    class="btn btn-primary">Lisa
-                                                            </button>
-
-                                                            <hr/>
-                                                            <table class="table table-striped">
-                                                                <tr ng-repeat="comnt in comment">
-                                                                    <td>{{ comnt }}
-                                                                        <button type="button" style="float: right;"
-                                                                                ng-click="remItem($index)" class="close"
-                                                                                aria-label="Close"><span
-                                                                                aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </form>
-                                                    </div>
-                                                </script>
-
-                                                <button class="btn btn-default btn-sm" ng-click="open('lg')">
-                                                    Kommentaarid
-                                                </button>
-                                            </div>
-
-                                        </a>
-                                        <br/>
-                                    </div>
                                 </form>
 
                             </div>
                             <div class="col-md-6">
 
+                                            <?php
+                $q_gift = mysql_query("SELECT id, gift_name, gift_description, gift_price, events_id FROM gifts WHERE events_id = '$eventId' ORDER BY id DESC");
+                while ($gift = mysql_fetch_array($q_gift)) {
+
+                    echo "<a class='list-group-item'>
+                                    <div class='row'>
+                                        <div class='col-md-9'>";
+                    echo "<h2>" . $gift['gift_name'] . "</h2 >";
+                    echo $gift['gift_description'];
+                    echo "<h2>" . $gift['gift_price'] . "€</h2 >";
+
+
+                    echo "
+
+                                        </div>
+                                    </div>
+                                    <div ng-controller='ModalCommentCtrl'>
+                                        <script type='text/ng-template' id='comments.html'>
+                                            <div class='modal-header'>
+                                                <h3 class='modal-title'>Kommentaarid</h3>
+                                            </div>
+
+                                        </script>
+
+                                        <button class='btn btn-default btn-sm' ng-click='open('lg')'>
+                                            Kommentaarid
+                                        </button>
+                                    </div>
+
+                                </a>";
+                        }
+                        ?>
 
                             </div>
                 </tab>
@@ -331,6 +304,25 @@ $active = $_SESSION['active'];
     </div>
 
 </section>
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+<script type="text/javascript">
+    $("#submit").click( function() {
+        $.post( $("#attendForm").attr("action"),
+            $("#attendForm :input").serializeArray(),
+            function(info){ $("#result").html(info);
+            });
+        clearInput();
+    });
+
+    $("#attendForm").submit( function() {
+        return false;
+    });
+    function clearInput() {
+        $("#attendForm :input").each( function() {
+            $(this).val('');
+        });
+    }
+</script>
 <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCasRZV40wstmFA-Tu6SbYEgiZneL1uLFs">
 </script>
