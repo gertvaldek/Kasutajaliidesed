@@ -80,11 +80,7 @@ $active = $_SESSION['active'];
                                             <button class="btn btn-default" ng-click="open('lg')">Asukoht kaardil
                                             </button>
                                         </div>
-
-
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -142,7 +138,7 @@ $active = $_SESSION['active'];
                     <hr/>
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
 
                                 <h4>Lisa kingitus</h4>
                                 <hr/>
@@ -164,40 +160,41 @@ $active = $_SESSION['active'];
                                 </form>
 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-8">
 
                                             <?php
+
+
+
+
                 $q_gift = mysql_query("SELECT id, gift_name, gift_description, gift_price, events_id FROM gifts WHERE events_id = '$eventId' ORDER BY id DESC");
                 while ($gift = mysql_fetch_array($q_gift)) {
 
-                    echo "<a class='list-group-item'>
-                                    <div class='row'>
-                                        <div class='col-md-9'>";
-                    echo "<h2>" . $gift['gift_name'] . "</h2><h3><span class='label label-default'>" . $gift['gift_price'] . "€</span></h3>";
-                    echo $gift['gift_description'];
+          /*          $thumbs = mysql_query("SELECT SUM(vote) AS total  FROM gift_has_votes WHERE gift_events_id = '$eventId'");
+                    $thumbcount = mysql_fetch_assoc($thumbs);*/
+
+                    echo "<li class='list-group-item'><div class='row'>
+
+                                        <div class='col-md-2'>";
+                    echo "<h3>" . $gift['gift_name'] . " </h3><h4><span class='label label-primary'>" . $gift['gift_price'] . "€</span></h4>
+
+                                </div>
+                    ";
+                    echo "<div class='col-md-7'>" . $gift['gift_description'] . "
+
+                    </br>
+
+                    </div><div class='col-md-3'>                    <a href='#'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a>  1  <a href='#'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a>
+                    </p></p><button id='submit' type='button' class='btn btn-default btn-sm'>Kommentaarid
+                                    </button></div>";
 
 
                     echo "
 
                                         </div>
-                                    </div>
-                                                                            <div ng-controller='ModalDemoCtrl'>
-                                            <script type='text/ng-template' id='myModalContent.html'>
-                                                <div class='modal-header'>
-                                                    <h3 class='modal-title'>Ürituse asukoht</h3>
-                                                </div>
-                                                <div class='modal-body'>
-                                                    <p>Tere</p>
-                                                </div>
-                                            </script>
-
-                                            <button class='btn btn-default' ng-click='open('lg')'>Asukoht kaardil
-                    </button>
-                                        </div>
 
 
-
-                                </a>";
+                                </li>";
                         }
                         ?>
 
@@ -219,40 +216,9 @@ $active = $_SESSION['active'];
     </div>
     <!-- END TAB 2 -->
 </section>
-<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-<script type="text/javascript">
-    $("#submit").click( function() {
-        $.post( $("#attendForm").attr("action"),
-            $("#attendForm :input").serializeArray(),
-            function(info){ $("#result").html(info);
-            });
-        clearInput();
-    });
-
-    $("#attendForm").submit( function() {
-        return false;
-    });
-    function clearInput() {
-        $("#attendForm :input").each( function() {
-            $(this).val('');
-        });
-    }
-</script>
 <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCasRZV40wstmFA-Tu6SbYEgiZneL1uLFs">
 </script>
-<script type="text/javascript">
-    function initialize() {
-        var mapOptions = {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-                mapOptions);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-
 </body>
 
 </html>
