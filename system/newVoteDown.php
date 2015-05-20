@@ -14,9 +14,8 @@ $active = $_SESSION['active'];
 
 $voteId = (int)$_GET['giftId'];
 
-$vote = ("UPDATE gifts SET votes = votes + 1 WHERE id = $voteId");
+$vote = ("UPDATE gifts SET votes = votes - 1 WHERE id = $voteId");
 $voteUp = mysql_query($vote);
 header("Location: ../party.php?eventId=$eventId");
-
 
 ?>

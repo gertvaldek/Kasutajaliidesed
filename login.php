@@ -14,7 +14,6 @@ include 'system/connection.php';?>
 
 <div ng-app="validationApp" ng-controller="mainController">
     <div class="container">
-        <img src="images/logo.png" >
         <div class="panel panel-default">
             <div class="panel-body">
 
@@ -40,9 +39,10 @@ include 'system/connection.php';?>
                     </div>
 
                     <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Logi sisse</button>
-                    <button onclick="location.href='register.php'" class="btn btn-primary" >Registreeru</button>
+
 
                 </form>
+                <button onclick="location.href='register.php'" class="btn btn-default" style="float: right">Registreeru</button>
 
             </div>
         </div>

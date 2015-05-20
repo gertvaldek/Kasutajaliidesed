@@ -11,7 +11,6 @@
 
 <div ng-app="validationApp" ng-controller="mainController">
     <div class="container">
-        <img src="images/logo.png">
         <div class="panel panel-default">
             <div class="panel-body">
 

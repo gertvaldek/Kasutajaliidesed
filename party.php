@@ -164,14 +164,19 @@ $active = $_SESSION['active'];
 
                                             <?php
 
-
-
-
                 $q_gift = mysql_query("SELECT id, gift_name, gift_description, gift_price, events_id FROM gifts WHERE events_id = '$eventId' ORDER BY id DESC");
                 while ($gift = mysql_fetch_array($q_gift)) {
 
-          /*          $thumbs = mysql_query("SELECT SUM(vote) AS total  FROM gift_has_votes WHERE gift_events_id = '$eventId'");
-                    $thumbcount = mysql_fetch_assoc($thumbs);*/
+                    $giftId = $gift['id'];
+
+                    // Loen hääled ära iga kingituse kohta
+                    $thumbs = mysql_query("SELECT votes, id FROM gifts WHERE id = $giftId");
+                    $voteCount = mysql_fetch_array($thumbs);
+
+                    $id = $gift['id'];
+                    $votes = $voteCount['votes'];
+
+                    // echo "debug " .$votes;
 
                     echo "<li class='list-group-item'><div class='row'>
 
@@ -184,8 +189,8 @@ $active = $_SESSION['active'];
 
                     </br>
 
-                    </div><div class='col-md-3'>                    <a href='#'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a>  1  <a href='#'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a>
-                    </p></p><button id='submit' type='button' class='btn btn-default btn-sm'>Kommentaarid
+                    </div><div class='col-md-3'>                    <a href='system/newVoteUp.php?giftId=$id&eventId=$eventId'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a> $votes <a href='system/newVoteDown.php?giftId=$id'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a>
+                    </p></ü><button id='submit' type='button' class='btn btn-default btn-sm'>Kommentaarid
                                     </button></div>";
 
 
