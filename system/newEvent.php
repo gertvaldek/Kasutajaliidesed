@@ -8,7 +8,7 @@
 
 include 'connection.php';
 
-$nevent = "INSERT INTO event (title,venue,birthday_age,description) VALUES  ('".$_REQUEST['title']."','".$_REQUEST['venue']."','".$_REQUEST['age']."','".$_REQUEST['description']."');";
-$dbq = mysql_query($nevent);
+$event = "INSERT INTO event (title,venue,birthday_age,description) VALUES  ('".$_REQUEST['title']."','".$_REQUEST['venue']."','".$_REQUEST['age']."','".$_REQUEST['description']."');";
+$dbq = mysql_query($event);
 
 ?>

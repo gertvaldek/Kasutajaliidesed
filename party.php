@@ -146,19 +146,19 @@ $active = $_SESSION['active'];
 
                                 <h4>Lisa kingitus</h4>
                                 <hr/>
-                                <form ng-controller="GiftsController">
+                                <form method="post" action="system/newGift.php?eventId=<?php echo "$eventId"; ?>">
                                     <div class="input-group">
                                         <span class="input-group-addon">Nimi</span>
-                                        <input name="giftName" type="text" class="form-control">
+                                        <input name="giftName" type="text" class="form-control" required>
                                     </div>
                                     <div class="input-group">
 
                                     <span class="input-group-addon">Hind</span>
-                                        <input name="giftPrice" type="text" class="form-control">
+                                        <input name="giftPrice" type="text" class="form-control" required>
                                     </div>
-                                    <textarea name="giftDescription" class="form-control" rows="3" placeholder="Kirjeldus"></textarea>
+                                    <textarea name="giftDescription" class="form-control" rows="3" placeholder="Kirjeldus" required></textarea>
                                     <br>
-                                    <button ng-click='btn_add();' type="button" class="btn btn-primary">Lisa kingitus
+                                    <button id="submit" type="submit" class="btn btn-primary">Lisa kingitus
                                     </button>
                                     <hr/>
                                 </form>
@@ -173,27 +173,29 @@ $active = $_SESSION['active'];
                     echo "<a class='list-group-item'>
                                     <div class='row'>
                                         <div class='col-md-9'>";
-                    echo "<h2>" . $gift['gift_name'] . "</h2 >";
+                    echo "<h2>" . $gift['gift_name'] . "</h2><h3><span class='label label-default'>" . $gift['gift_price'] . "€</span></h3>";
                     echo $gift['gift_description'];
-                    echo "<h2>" . $gift['gift_price'] . "€</h2 >";
 
 
                     echo "
 
                                         </div>
                                     </div>
-                                    <div ng-controller='ModalCommentCtrl'>
-                                        <script type='text/ng-template' id='comments.html'>
-                                            <div class='modal-header'>
-                                                <h3 class='modal-title'>Kommentaarid</h3>
-                                            </div>
+                                                                            <div ng-controller='ModalDemoCtrl'>
+                                            <script type='text/ng-template' id='myModalContent.html'>
+                                                <div class='modal-header'>
+                                                    <h3 class='modal-title'>Ürituse asukoht</h3>
+                                                </div>
+                                                <div class='modal-body'>
+                                                    <p>Tere</p>
+                                                </div>
+                                            </script>
 
-                                        </script>
+                                            <button class='btn btn-default' ng-click='open('lg')'>Asukoht kaardil
+                    </button>
+                                        </div>
 
-                                        <button class='btn btn-default btn-sm' ng-click='open('lg')'>
-                                            Kommentaarid
-                                        </button>
-                                    </div>
+
 
                                 </a>";
                         }
@@ -207,102 +209,15 @@ $active = $_SESSION['active'];
 
         </div>
     </div>
-    </div>
-    </div>
 
     <!-- 2 TAB 2        2 TAB 2  ================================================================= -->
 
     <div ng-show="tabs.isSet(2)">
-        <div class="events">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="row">
-                        <div ng-controller="CollapseDemoCtrl">
-                            <div class="col-md-6">
 
-                                <form>
+            <?php include 'event.php'; ?>
 
-                                    <div class="form-group">
-                                        <label for="name">Pealkiri</label>
-                                        <input type="text" ng-model="heading" class="form-control"
-                                               id="exampleInputEmail1"
-                                               placeholder="Ürituse nimi">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="descrition">Ürituse kirjeldus</label>
-                                        <textarea class="form-control" ng-model="description" rows="3"></textarea>
-                                    </div>
-
-                                    <div ng-controller="ModalDemoCtrl">
-                                        <script type="text/ng-template" id="myModalContent.html">
-                                            <div class="modal-header">
-                                                <h3 class="modal-title">Ürituse asukoht</h3>
-                                            </div>
-                                            <div class="modal-body">
-                                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d32464.833613291285!2d24.744077886013756!3d59.43220559995476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2see!4v1428521236008"
-                                                        width="100%" height="400" frameborder="0"
-                                                        style="border:0"></iframe>
-                                            </div>
-                                        </script>
-
-                                        <button class="btn btn-default" ng-click="open('lg')">Märkige kaardile ürituse
-                                            asukoht
-                                        </button>
-                                    </div>
-                                    <hr/>
-                                    <button class="btn btn-primary" type="submit">Lisa üritus</button>
-                                </form>
-
-
-                            </div>
-                            <div class="col-md-6">
-                                <div ng-controller="DatepickerDemoCtrl">
-
-                                    <!--  Chose date output
-                                            <pre>Valitud kuupäev: <em>{{dt | date:'fullDate' }}</em></pre>
-                                    -->
-
-
-                                    <h4>Valige kellaaeg ja kuupäev</h4>
-
-                                    <div ng-controller="TimepickerDemoCtrl">
-
-                                        <timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep"
-                                                    minute-step="mstep" show-meridian="ismeridian"></timepicker>
-
-                                        <!-- Chosen time output
-                                                <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
-                                        -->
-
-                                    </div>
-
-                                    <div style="display:inline-block; min-height:290px;">
-                                        <datepicker ng-model="dt" min-date="minDate" show-weeks="true"
-                                                    class="well well-sm"></datepicker>
-                                    </div>
-                                </div>
-                                <!-- Collapse tab
-
-                                <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Ürituse aja ja kuupäeva
-                                    sisestamine
-                                </button>
-                                <hr>
-                                <div collapse="isCollapsed">
-                                    <div class="well well-lg">
-
-                                    </div>
-                                    -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- END TAB 2 -->
-    </div>
-
 </section>
 <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
 <script type="text/javascript">
