@@ -183,22 +183,54 @@ $active = $_SESSION['active'];
                                     $id = $gift['id'];
                                     $votes = $voteCount['votes'];
 
+
                                     // echo "debug " .$votes;
+                                   // echo "debug " .$comments['comment'];
 
                                     echo "<li class='list-group-item'><div class='row'>
 
-                                        <div class='col-md-2'>";
-                                    echo "<h3>" . $gift['gift_name'] . " </h3><h4><span class='label label-primary'>" . $gift['gift_price'] . "€</span></h4>
+                                        <div class='col-md-12'>";
+                                    echo "<h4>" . $gift['gift_name'] . " <span class='label label-primary'>" . $gift['gift_price'] . "€</span></h4>
 
-                                </div>
+                                </div></div><div class='row'>
                     ";
-                                    echo "<div class='col-md-7'>" . $gift['gift_description'] . "
+                                    echo "<div class='col-md-8'>" . $gift['gift_description'] . "
 
                     </br>
 
-                    </div><div class='col-md-3'>                    <a href='system/newVoteUp.php?giftId=$id&eventId=$eventId'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a> $votes <a href='system/newVoteDown.php?giftId=$id&eventId=$eventId'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a>
-                    </p></ü><button id='submit' type='button' class='btn btn-default btn-sm'>Kommentaarid
-                                    </button></div>";
+                    </div><div class='col-md-4'>                   <a href='system/newVoteUp.php?giftId=$id&eventId=$eventId'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a> $votes <a href='system/newVoteDown.php?giftId=$id&eventId=$eventId'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a>
+                                                                            <div ng-controller='ModalDemoCtrl'>
+                                <script type='text/ng-template' id='myModalContent.html'>
+                                    <div class='modal-header'>
+                                        <h3 class='modal-title'>Kommentaarid</h3>
+                                    </div>
+                                    <div class='modal-body'><table class='table table-striped'>";
+
+                                    // Laen kõik kommentaarid selle kingi kohta
+                                    $q_comment = mysql_query("SELECT comment, users_id, gifts_id FROM comments  WHERE gifts_id = $id ORDER BY id DESC");
+                                    while ($comments = mysql_fetch_array($q_comment)) {
+
+                                        echo "<tr><td>";
+                                        echo $comments['comment'];
+                                        echo "</td></tr>";
+
+                                    }
+
+                                   echo " </table>
+                                    </br>
+                                    <form method='post' action='system/newComment.php?giftId=$id&eventId=$eventId'>
+                                    <textarea name='userComment'class='form-control' placeholder='Lisa oma kommentaar'></textarea>
+                                    </br>
+                                    <button type='submit' class='btn btn-primary'>Kommenteeri</button>
+                                    </form>
+                                    </div>
+
+                                    <div class='modal-footer'>
+                                        <button class='btn btn-warning' ng-click='cancel()'>Sulge</button>
+                                    </div>
+                                </script>
+                                <button class='btn btn-default btn-sm' ng-click='open(lg)'>Kommentaarid</button>
+                            </div>";
 
 
                                     echo "
@@ -211,6 +243,7 @@ $active = $_SESSION['active'];
                                 ?>
 
                             </div>
+
                 </tab>
 
 
