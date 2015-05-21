@@ -15,7 +15,8 @@
             <div class="panel-body">
 
 
-                <form name="userForm" ng-submit="submitForm()" method="post" action="system/newRegisterUser.php" novalidate>
+                <form name="userForm" ng-submit="submitForm()" method="post" action="system/newRegisterUser.php"
+                      novalidate>
 
 
                     <!-- FIRSTNAME -->

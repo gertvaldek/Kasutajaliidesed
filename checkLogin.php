@@ -9,17 +9,17 @@
 session_start();
 include dirname('Kasutajaliidesed') . '/system/connection.php';
 
-$myusername=$_POST['email'];
+$myusername = $_POST['email'];
 $myusername = stripslashes($myusername);
 $myusername = mysql_real_escape_string($myusername);
 
-$mypassword=$_POST['password'];
+$mypassword = $_POST['password'];
 $mypassword = stripslashes($mypassword);
 $mypassword = mysql_real_escape_string($mypassword);
 
-$sql="SELECT * FROM users WHERE e_mail='$myusername' AND password='$mypassword'";
-$result1=mysql_query($sql);
-$count1=mysql_num_rows($result1);
+$sql = "SELECT * FROM users WHERE e_mail='$myusername' AND password='$mypassword'";
+$result1 = mysql_query($sql);
+$count1 = mysql_num_rows($result1);
 //$mypassword=$_POST['mypassword'];
 //$mypassword = stripslashes($mypassword);
 //$mypassword = mysql_real_escape_string($mypassword);
@@ -27,8 +27,8 @@ $count1=mysql_num_rows($result1);
 //$result2=mysql_query($sql);
 //$count2=mysql_num_rows($result2);
 
-if($count1==1){
-    $_SESSION['myusername']="username";
+if ($count1 == 1) {
+    $_SESSION['myusername'] = "username";
     header("Location: index.php");
     $_SESSION['active'] = $_POST['email'];
 } else {

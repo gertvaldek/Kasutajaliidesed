@@ -15,6 +15,6 @@ $price = $_REQUEST['giftPrice'];
 
 $sql = "INSERT INTO gifts (gift_name, gift_description, gift_price, events_id)
         VALUES ('$name','$desc', '$price', '$eventId')";
-$result1=mysql_query($sql);
+$result1 = mysql_query($sql);
 header("Location: ../party.php?eventId=$eventId");
 ?>

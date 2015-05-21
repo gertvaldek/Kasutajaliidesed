@@ -2,7 +2,7 @@
 session_start();
 
 
-include 'system/connection.php';?>
+include 'system/connection.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -42,18 +42,20 @@ include 'system/connection.php';?>
 
 
                 </form>
-                <button onclick="location.href='register.php'" class="btn btn-default" style="float: right">Registreeru</button>
+                <button onclick="location.href='register.php'" class="btn btn-default" style="float: right">
+                    Registreeru
+                </button>
 
             </div>
         </div>
 
     </div>
-    </div>
+</div>
 
-    <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
-    <script src='http://code.angularjs.org/1.2.6/angular.js'></script>
+<script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+<script src='http://code.angularjs.org/1.2.6/angular.js'></script>
 
-    <script src="js/validator.js"></script>
+<script src="js/validator.js"></script>
 
 </body>
 

@@ -185,7 +185,7 @@ $active = $_SESSION['active'];
 
 
                                     // echo "debug " .$votes;
-                                   // echo "debug " .$comments['comment'];
+                                    // echo "debug " .$comments['comment'];
 
                                     echo "<li class='list-group-item'><div class='row'>
 
@@ -216,7 +216,7 @@ $active = $_SESSION['active'];
 
                                     }
 
-                                   echo " </table>
+                                    echo " </table>
                                     </br>
                                     <form method='post' action='system/newComment.php?giftId=$id&eventId=$eventId'>
                                     <textarea name='userComment'class='form-control' placeholder='Lisa oma kommentaar'></textarea>

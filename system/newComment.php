@@ -18,7 +18,7 @@ $user = mysql_fetch_array($q_user);
 
 
 $sql = "INSERT INTO comments (comment, gifts_id, users_id)
-        VALUES ('$comment','$giftId', '".$user['id']."')";
-$result1=mysql_query($sql);
+        VALUES ('$comment','$giftId', '" . $user['id'] . "')";
+$result1 = mysql_query($sql);
 header("Location: ../party.php?eventId=$eventId");
 ?>

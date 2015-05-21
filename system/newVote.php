@@ -16,7 +16,7 @@ $eventId = (int)$_GET['eventId'];
 
 
 $event = "INSERT INTO gift_has_votes (title,venue,birthday_age,description)
-VALUES  ('".$_REQUEST['title']."','".$_REQUEST['venue']."','".$_REQUEST['age']."','".$_REQUEST['description']."');";
+VALUES  ('" . $_REQUEST['title'] . "','" . $_REQUEST['venue'] . "','" . $_REQUEST['age'] . "','" . $_REQUEST['description'] . "');";
 $dbq = mysql_query($event);
 
 ?>

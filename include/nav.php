@@ -27,9 +27,9 @@ echo '
                 <li role="presentation"><a href ng-click="tabs.setTab(2)">Loo uus üritus</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right"> '?>
-            <?php if ($_SESSION['active'] == true) { ?>
-                    <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $userq['firstname'] . " " . $userq['lastname'] ; ?> </a></li>
+            <ul class="nav navbar-nav navbar-right"> ' ?>
+<?php if ($_SESSION['active'] == true) { ?>
+                    <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $userq['firstname'] . " " . $userq['lastname']; ?> </a></li>
                 <li><a href="system/logout.php">Logi välja</a>
                 </li>
 
