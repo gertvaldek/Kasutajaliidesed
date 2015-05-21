@@ -9,7 +9,7 @@ $active = $_SESSION['active'];
 <head>
     <?php include 'include/head.php'; ?>
 
-<link rel="stylesheet" href="css/party.css">
+    <link rel="stylesheet" href="css/party.css">
 </head>
 <body>
 <section class="tabs" ng-controller="TabsController as tabs">
@@ -21,21 +21,22 @@ $active = $_SESSION['active'];
     <?php
 
     // Võtan URList event ID
-   $eventId = (int)$_GET['eventId'];
+    $eventId = (int)$_GET['eventId'];
 
     ?>
 
 
     <div ng-show="tabs.isSet(1)">
 
-            <div class="backButton">
+        <div class="backButton">
 
-                    <ul class="pager">
-                        <li><a onclick="javascript:window.location.href='index.php'"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true">    </a></li>
+            <ul class="pager">
+                <li><a onclick="javascript:window.location.href='index.php'"><span
+                            class="glyphicon glyphicon-chevron-left" aria-hidden="true"> </a></li>
 
-                    </ul>
+            </ul>
 
-            </div>
+        </div>
 
         <div class="events" ng-controller="TabsDemoCtrl">
             <tabset justified="true">
@@ -55,14 +56,14 @@ $active = $_SESSION['active'];
                                         while ($event = mysql_fetch_array($q_event)) {
 
                                             echo '<img src="images/party1.jpg" alt="Pidu 1" class="img-thumbnail"></div>';
-                                        echo '<div class="col-md-7">';
-                                        echo '<h3>' . $event['title'] . '  <span class="label label-primary">' . $event['birthday_age'] . '</span></h3>';
-                                        echo '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> ' . $event['date'] . "  ";
+                                            echo '<div class="col-md-7">';
+                                            echo '<h3>' . $event['title'] . '  <span class="label label-primary">' . $event['birthday_age'] . '</span></h3>';
+                                            echo '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> ' . $event['date'] . "  ";
                                             echo '<span class="glyphicon glyphicon-time" aria-hidden="true"></span> ' . $event['time'];
-                                        echo '  <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> ' . $event['venue'];
-                                        echo '<hr/>';
-                                        echo $event['description'];
-                                        echo '<hr/>';
+                                            echo '  <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> ' . $event['venue'];
+                                            echo '<hr/>';
+                                            echo $event['description'];
+                                            echo '<hr/>';
 
                                         } ?>
                                         <div ng-controller="ModalDemoCtrl">
@@ -71,9 +72,10 @@ $active = $_SESSION['active'];
                                                     <h3 class="modal-title">Ürituse asukoht</h3>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2031.2093282457106!2d24.671312999999994!3d59.396220000000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x6d2aca157f975923!2sTallinna+Tehnika%C3%BClikooli+Raamatukogu!5e0!3m2!1sen!2see!4v1428518538792"
-                                                            width="100%" height="400" frameborder="0"
-                                                            style="border:0"></iframe>
+                                                    <iframe
+                                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2031.2093282457106!2d24.671312999999994!3d59.396220000000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x6d2aca157f975923!2sTallinna+Tehnika%C3%BClikooli+Raamatukogu!5e0!3m2!1sen!2see!4v1428518538792"
+                                                        width="100%" height="400" frameborder="0"
+                                                        style="border:0"></iframe>
                                                 </div>
                                             </script>
 
@@ -97,10 +99,14 @@ $active = $_SESSION['active'];
                                     <h4>Märgi ennast osalejaks <span class="label label-primary">Nüüd ja kohe!</span>
                                     </h4>
                                     <hr/>
-                                    <form id="attendForm" method="post" action="system/newAttend.php?eventId=<?php echo "$eventId"; ?>">
+                                    <form id="attendForm" method="post"
+                                          action="system/newAttend.php?eventId=<?php echo "$eventId"; ?>">
 
-                                        <button id="submit" name="status" value="Jah" class="btn btn-default">Jah</button>
-                                        <button id="submit" name="status" value="Võib-olla" class="btn btn-default">Võib-olla</button>
+                                        <button id="submit" name="status" value="Jah" class="btn btn-default">Jah
+                                        </button>
+                                        <button id="submit" name="status" value="Võib-olla" class="btn btn-default">
+                                            Võib-olla
+                                        </button>
                                         <button id="submit" name="status" value="Ei" class="btn btn-default">Ei</button>
 
                                         <hr/>
@@ -149,10 +155,11 @@ $active = $_SESSION['active'];
                                     </div>
                                     <div class="input-group">
 
-                                    <span class="input-group-addon">Hind</span>
+                                        <span class="input-group-addon">Hind</span>
                                         <input name="giftPrice" type="text" class="form-control" required>
                                     </div>
-                                    <textarea name="giftDescription" class="form-control" rows="3" placeholder="Kirjeldus" required></textarea>
+                                    <textarea name="giftDescription" class="form-control" rows="3"
+                                              placeholder="Kirjeldus" required></textarea>
                                     <br>
                                     <button id="submit" type="submit" class="btn btn-primary">Lisa kingitus
                                     </button>
@@ -162,46 +169,46 @@ $active = $_SESSION['active'];
                             </div>
                             <div class="col-md-8">
 
-                                            <?php
+                                <?php
 
-                $q_gift = mysql_query("SELECT id, gift_name, gift_description, gift_price, events_id FROM gifts WHERE events_id = '$eventId' ORDER BY id DESC");
-                while ($gift = mysql_fetch_array($q_gift)) {
+                                $q_gift = mysql_query("SELECT id, gift_name, gift_description, gift_price, events_id FROM gifts WHERE events_id = '$eventId' ORDER BY id DESC");
+                                while ($gift = mysql_fetch_array($q_gift)) {
 
-                    $giftId = $gift['id'];
+                                    $giftId = $gift['id'];
 
-                    // Loen hääled ära iga kingituse kohta
-                    $thumbs = mysql_query("SELECT votes, id FROM gifts WHERE id = $giftId");
-                    $voteCount = mysql_fetch_array($thumbs);
+                                    // Loen hääled ära iga kingituse kohta
+                                    $thumbs = mysql_query("SELECT votes, id FROM gifts WHERE id = $giftId");
+                                    $voteCount = mysql_fetch_array($thumbs);
 
-                    $id = $gift['id'];
-                    $votes = $voteCount['votes'];
+                                    $id = $gift['id'];
+                                    $votes = $voteCount['votes'];
 
-                    // echo "debug " .$votes;
+                                    // echo "debug " .$votes;
 
-                    echo "<li class='list-group-item'><div class='row'>
+                                    echo "<li class='list-group-item'><div class='row'>
 
                                         <div class='col-md-2'>";
-                    echo "<h3>" . $gift['gift_name'] . " </h3><h4><span class='label label-primary'>" . $gift['gift_price'] . "€</span></h4>
+                                    echo "<h3>" . $gift['gift_name'] . " </h3><h4><span class='label label-primary'>" . $gift['gift_price'] . "€</span></h4>
 
                                 </div>
                     ";
-                    echo "<div class='col-md-7'>" . $gift['gift_description'] . "
+                                    echo "<div class='col-md-7'>" . $gift['gift_description'] . "
 
                     </br>
 
-                    </div><div class='col-md-3'>                    <a href='system/newVoteUp.php?giftId=$id&eventId=$eventId'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a> $votes <a href='system/newVoteDown.php?giftId=$id'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a>
+                    </div><div class='col-md-3'>                    <a href='system/newVoteUp.php?giftId=$id&eventId=$eventId'><span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span></a> $votes <a href='system/newVoteDown.php?giftId=$id&eventId=$eventId'><span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'></span></a>
                     </p></ü><button id='submit' type='button' class='btn btn-default btn-sm'>Kommentaarid
                                     </button></div>";
 
 
-                    echo "
+                                    echo "
 
                                         </div>
 
 
                                 </li>";
-                        }
-                        ?>
+                                }
+                                ?>
 
                             </div>
                 </tab>
@@ -216,7 +223,7 @@ $active = $_SESSION['active'];
 
     <div ng-show="tabs.isSet(2)">
 
-            <?php include 'event.php'; ?>
+        <?php include 'event.php'; ?>
 
     </div>
     <!-- END TAB 2 -->
